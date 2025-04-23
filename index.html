@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Laravel</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link
+      href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] min-h-screen">
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-transparent text-white font-bold"
+      id="navbar"
+    >
+      <div class="navbar shadow-sm">
+        <!-- Horizontal Menu with Dropdown (Visible on Large Screens) -->
+        <div class="flex-1 lg:flex hidden">
+          <ul class="menu menu-horizontal px-1">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Testimonial</a></li>
+          </ul>
+        </div>
+
+        <!-- Logo on the Right -->
+        <div class="flex-none ml-auto">
+          <a class="btn btn-ghost text-xl">daisyUI</a>
+        </div>
+
+        <!-- Hamburger Button (Visible on mobile) -->
+        <div class="lg:hidden flex-none ml-auto">
+          <button id="hamburger-btn" class="btn btn-ghost text-xl">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="lg:hidden hidden fixed top-0 left-0 w-3/4 min-h-screen bg-gray-800 text-white z-50"
+        id="mobile-menu"
+      >
+        <!-- Logo or Button Above the Menu -->
+        <a class="btn btn-ghost text-xl px-6 py-4 block">daisyUI</a>
+
+        <!-- Mobile Menu Items -->
+        <ul class="menu menu-vertical px-6 py-6 my-3">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Testimonial</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="relative h-screen text-white text-4xl overflow-hidden">
+      <div
+        class="absolute bg-cover bg-center opacity-30 inset-0 bg-[url('https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp')]"
+      ></div>
+      <div
+        class="relative z-10 flex items-center justify-center h-full text-center"
+      >
+        <h1 class="font-bold">Welcome to the Hero Section</h1>
+      </div>
+    </section>
+
+    <div class="overflow-hidden">
+      <h1 class="text-4xl font-bold dark:text-white text-center py-6">
+        THE JOURNEY STARTS HERE...
+      </h1>
+    </div>
+
+    <div class="overflow-x-auto">
+      <div class="carousel bg-neutral rounded-box mx-3">
+        <div class="carousel-item flex flex-col m-0 p-0">
+          <img
+            src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp"
+            class="rounded-box w-2/3"
+          />
+          <p class="text-lg font-bold dark:text-white text-center pt-3 w-2/3">
+            Customize Your Own
+          </p>
+          <p class="text-md font-bold dark:text-white text-center w-2/3">
+            whatever design you heart desires, we'll do anything to make it come
+            true.
+          </p>
+        </div>
+        <div class="carousel-item flex flex-col m-0 p-0">
+          <img
+            src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp"
+            class="rounded-box w-2/3"
+          />
+          <p class="text-lg font-bold dark:text-white text-center pt-3 w-2/3">
+            Customize Your Own
+          </p>
+          <p class="text-md font-bold dark:text-white text-center w-2/3">
+            whatever design you heart desires, we'll do anything to make it come
+            true.
+          </p>
+        </div>
+        <div class="carousel-item flex flex-col m-0 p-0">
+          <img
+            src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp"
+            class="rounded-box w-2/3"
+          />
+          <p class="text-lg font-bold dark:text-white text-center pt-3 w-2/3">
+            Customize Your Own
+          </p>
+          <p class="text-md font-bold dark:text-white text-center w-2/3">
+            whatever design you heart desires, we'll do anything to make it come
+            true.
+          </p>
+        </div>
+        <div class="carousel-item flex flex-col m-0 p-0">
+          <img
+            src="https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp"
+            class="rounded-box w-2/3"
+          />
+          <p class="text-lg font-bold dark:text-white text-center pt-3 w-2/3">
+            Customize Your Own
+          </p>
+          <p class="text-md font-bold dark:text-white text-center w-2/3">
+            whatever design you heart desires, we'll do anything to make it come
+            trues.
+          </p>
+        </div>
+        <div class="carousel-item flex flex-col m-0 p-0">
+          <img
+            src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp"
+            class="rounded-box w-2/3"
+          />
+          <p class="text-lg font-bold dark:text-white text-center pt-3 w-2/3">
+            Customize Your Own
+          </p>
+          <p class="text-md font-bold dark:text-white text-center w-2/3">
+            whatever design you heart desires, we'll do anything to make it come
+            true.
+          </p>
+        </div>
+        <div class="carousel-item flex flex-col m-0 p-0">
+          <img
+            src="https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp"
+            class="rounded-box w-2/3"
+          />
+          <p class="text-lg font-bold dark:text-white text-center pt-3 w-2/3">
+            Customize Your Own
+          </p>
+          <p class="text-md font-bold dark:text-white text-center w-2/3">
+            whatever design you heart desires, we'll do anything to make it come
+            true.
+          </p>
+        </div>
+        <div class="carousel-item flex flex-col m-0 p-0">
+          <img
+            src="https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp"
+            class="rounded-box w-2/3"
+          />
+          <p class="text-lg font-bold dark:text-white text-center pt-3 w-2/3">
+            Customize Your Own
+          </p>
+          <p class="text-md font-bold dark:text-white text-center w-2/3">
+            whatever design you heart desires, we'll do anything to make it come
+            true.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <section class="relative h-screen text-white my-8">
+      <div
+        class="absolute bg-cover bg-center opacity-30 inset-0 bg-[url('https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp')]"
+      ></div>
+      <div
+        class="container relative z-30 flex items-center justify-center h-full pb-26"
+      >
+        <div class="flex justify-center gap-100 w-full">
+          <!-- Profile 1 -->
+          <div
+            class="flex flex-col items-center text-center flex-shrink-0 w-72"
+          >
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp"
+              class="w-64 h-64 rounded-full mx-auto mb-4 border-white object-cover"
+            />
+            <h2 class="text-2xl font-semibold mt-2 pointer-events-none">
+              Andrew
+            </h2>
+            <p
+              class="text-lg border border-white bg-white text-black rounded-3xl px-7 py-3 mt-6 min-w-[220px] text-center pointer-events-none"
+            >
+              ubur-ubur ikan lele
+            </p>
+          </div>
+          <!-- Profile 2 -->
+          <div
+            class="flex flex-col items-center text-center flex-shrink-0 w-72"
+          >
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp"
+              class="w-64 h-64 rounded-full mx-auto mb-4 border-white object-cover"
+            />
+            <h2 class="text-2xl font-semibold mt-2 pointer-events-none">
+              Daniel
+            </h2>
+            <p
+              class="text-lg border border-white bg-white text-black rounded-3xl px-7 py-3 mt-6 min-w-[220px] text-center pointer-events-none"
+            >
+              mantap le
+            </p>
+          </div>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="absolute bottom-15 left-1/2 transform -translate-x-1/2 z-20 text-lg border border-white bg-white text-black rounded-lg px-6 py-3 hover:cursor-pointer hover:bg-gray-200 transition"
+      >
+        <a href="">Read More </a>
+      </button>
+    </section>
+
+    <div class="flex items-center justify-center h-screen bg-white">
+      <!-- Contact-->
+      <form
+        id="contact"
+        class="relative w-96 border border-gray 300 p-4 bg-white"
+      >
+        <textarea
+          id="comment"
+          placeholder="Say something..."
+          class="w-full h-32 p-2 resize-none focus:outline-none"
+        ></textarea>
+        <button
+          id="sendbtn"
+          type="button"
+          class="mt-2 px-4 py-1 bg-gray-800 hover:bg-gray-700 rounded float-right text-sm text-white hover:cursor-pointer"
+        >
+          Send
+        </button>
+      </form>
+      <p id="message"></p>
+    </div>
+
+    <script>
+      // Attach to the form submit, not the button
+      document
+        .getElementById("contact")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the page from refreshing
+
+          const commentValue = document.getElementById("comment").value;
+
+          if (commentValue.trim() !== "") {
+            document.getElementById("message").textContent =
+              "Thank you for your message!";
+            document.getElementById("contact").reset();
+          } else {
+            document.getElementById("message").textContent =
+              "Please write something first.";
+          }
+        });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navbar = document.getElementById("navbar");
+        const navbarHeight = navbar.offsetHeight;
+
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > navbarHeight) {
+            navbar.classList.add("bg-white", "text-black");
+            navbar.classList.remove("bg-transparent", "text-white");
+          } else {
+            navbar.classList.add("bg-transparent", "text-white");
+            navbar.classList.remove("bg-white", "text-black");
+          }
+        });
+      });
+    </script>
+
+    <script>
+      const hamburgerButton = document.getElementById("hamburger-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      hamburgerButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
