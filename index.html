@@ -192,14 +192,14 @@
       </div>
     </div>
 
-    <section class="relative h-screen text-white my-8">
+    <section class="relative h-screen text-white overflow-x-hidden mt-8">
       <div
         class="absolute bg-cover bg-center opacity-30 inset-0 bg-[url('https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp')]"
       ></div>
       <div
         class="container relative z-30 flex items-center justify-center h-full pb-26"
       >
-        <div class="flex justify-center gap-100 w-full">
+        <div class="flex justify-center lg:gap-100 w-full">
           <!-- Profile 1 -->
           <div
             class="flex flex-col items-center text-center flex-shrink-0 w-72"
@@ -219,7 +219,7 @@
           </div>
           <!-- Profile 2 -->
           <div
-            class="flex flex-col items-center text-center flex-shrink-0 w-72"
+            class="flex flex-col lg:grid hidden items-center text-center flex-shrink-0 w-72"
           >
             <img
               src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp"
@@ -276,7 +276,7 @@
           const commentValue = document.getElementById("comment").value;
 
           if (commentValue.trim() !== "") {
-            document.getElementById("message").textContent =
+            document.getElementById("message").textContent =3
               "Thank you for your message!";
             document.getElementById("contact").reset();
           } else {
