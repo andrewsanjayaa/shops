@@ -149,20 +149,30 @@
           </div>
         </div>
       </div>
-      <button type = "button" class = "absolute bottom-15 left-1/2 transform -translate-x-1/2 z-20 text-lg border border-white bg-white text-black rounded-lg px-6 py-3 hover:cursor-pointer hover:bg-gray-200 transition">
+      <button type = "button" class = "absolute bottom-15 left-1/2 transform -translate-x-1/2 z-30 text-lg border border-white bg-white text-black rounded-lg px-6 py-3 hover:cursor-pointer hover:bg-gray-200 transition">
         <a href = "">Read More </a>
       </button>
     </section>
 
-    <div class = "flex items-center justify-center h-screen bg-white">
+    <div class = "flex items-center justify-center h-screen bg-white gap-54">
       <!-- Contact-->
-      <form id = "contact" class = "relative w-96 border border-gray 300 p-4 bg-white">
-        <textarea id = "comment" placeholder = "Say something..." class = "w-full h-32 p-2 resize-none focus:outline-none border-none" ></textarea>
+      <form id = "contact" class = "relative w-140 border border-gray 300 p-4 bg-white">
+        <textarea id = "comment" placeholder = "Say something..." class = "w-full h-56 p-2 resize-none focus:outline-none border-none" ></textarea>
         <button id = "sendbtn" type = "button" class = "mt-2 px-4 py-1 bg-gray-800 hover:bg-gray-500 rounded float-right text-sm text-white hover:cursor-pointer">
           Send
         </button>
       </form>
+      <div class = "flex flex-col items-center italic mt-[-50px]">
+        <h2 class = "text-5xl"> Contact Us! </h2>
+        <svg xmlns="http://www.w3.org/2000/svg" height="350" width="350" viewBox="0 0 512 512">
+          <path fill="#fdb0c0" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
+        </svg>
+        <p class = "text-3xl mt-[-25px]">Lorem ipsum dolor sit amet, consectetur</p>
+      </div>
     </div>
+
+
+    
 
     <script>
       // Attach to the form submit, not the button
