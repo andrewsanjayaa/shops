@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Laravel</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <!-- JS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] min-h-screen">
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-white text-black font-bold"
+      id="navbar"
+    >
+      <div class="navbar shadow-sm">
+        <!-- Horizontal Menu with Dropdown (Visible on Large Screens) -->
+        <div class="flex-1 lg:flex hidden">
+          <ul class="menu menu-horizontal px-1">
+            <li><a href="index.html"> Home </a></li>
+            <li><a href="#"> About Us </a></li>
+            <li><a href="#"> Products </a></li>
+            <li><a href="#"> Testimonial </a></li>
+          </ul>
+        </div>
+
+        <!-- Logo on the Right -->
+        <div class="flex-none ml-auto">
+          <a class="btn btn-ghost text-xl">daisyUI</a>
+        </div>
+
+        <!-- Hamburger Button (Visible on mobile) -->
+        <div class="lg:hidden flex-none ml-auto">
+          <button id="hamburger-btn" class="btn btn-ghost text-xl">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="lg:hidden hidden fixed top-0 left-0 w-3/4 min-h-screen bg-gray-800 text-white z-50"
+        id="mobile-menu"
+      >
+        <!-- Logo or Button Above the Menu -->
+        <a class="btn btn-ghost text-xl px-6 py-4 block"> daisyUI </a>
+
+        <!-- Mobile Menu Items -->
+        <ul class="menu menu-vertical px-6 py-6 my-3">
+          <li><a href="#"> Home </a></li>
+          <li><a href="#"> About Us </a></li>
+          <li><a href="#"> Products </a></li>
+          <li><a href="#"> Testimonial </a></li>
+        </ul>
+      </div>
+    </nav>
+
+  <section class = "grid grid-cols-2">
+    <div class = "w-full h-full">
+      <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "object-cover"/>
+    </div>
+    <div class = "w-full h-full relative">
+      <img src = "aset/photo-1507358522600-9f71e620c44e.webp"  class = "object-cover opacity-25"/>
+      <div class = "absolute inset-0 flex items-center justify-center">
+        <h2 class = "text-white text-center text-3xl"> OUR FAVORITE CUSTOM <br/> ORDER THIS MONTH! </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="flex justify-center items-center py-50 gap-70">
+    <!-- Testi 1 -->
+    <div class = "flex flex-col text-center text-white w-128">
+      <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class="w-128 h-100 object-cover"/>
+      <p class = "text-lg mt-8"> Lorem ipsum dolor sit amet, consectetur adipiscing. <br/> Vestibulum nec nisi urna. </p>
+      <p class = "font-semibold mt-6 text-lg"> Andrewina </p>
+    </div>
+    <!-- Testi 2 -->
+    <div class = "flex flex-col text-center text-white w-128">
+      <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class="w-128 h-100 object-cover"/>
+      <p class = "text-lg mt-8"> Lorem ipsum dolor sit amet, consectetur adipiscing. <br/> Vestibulum nec nisi urna. </p>
+      <p class = "font-semibold mt-6 text-lg"> Daniella </p>
+    </div>
+  </section>
+
