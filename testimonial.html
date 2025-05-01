@@ -88,7 +88,7 @@
     </div>
   </section>
 
-  <section class="flex justify-center items-center py-50 gap-70">
+  <section class = "flex justify-center items-center py-50 gap-70">
     <!-- Testi 1 -->
     <div class = "flex flex-col text-center text-white w-128">
       <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class="w-128 h-100 object-cover"/>
@@ -106,41 +106,40 @@
   <div class="w-full grid grid-cols-2">
     <!-- Top Left-->
     <div>
-      <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="h-140 w-full object-cover"/>
-      <div class="bg-white text-sm text-center p-4">
-        <p class="mb-2"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/> Vestibulum nec nisl urna. Integer tincidunt ipsum massa. </p>
-        <p class="font-semibold"> - DANIELO </p>
+      <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "h-140 w-full object-cover"/>
+      <div class = "bg-white text-sm text-center p-4">
+        <p class = "mb-2"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/> Vestibulum nec nisl urna. Integer tincidunt ipsum massa. </p>
+        <p class = "font-semibold"> - DANIELO </p>
       </div>
     </div>
     <!-- Top Right-->
     <div>
-      <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="h-130" />
+      <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "h-130"/>
     </div>
     <!-- Middle Left-->
     <div>
-      <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="w-full h-140" />
+      <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "w-full h-140"/>
     </div>
     <!-- Middle Right-->
     <div>
-      <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="mt-[-140px] h-150 "/>
+      <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "mt-[-140px] h-150"/>
     </div> 
     <!-- Bottom Left-->
     <div>
-      <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="h-150 "/>
+      <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "h-150 "/>
     </div> 
     <!-- Bottom Right-->
     <div>
-      <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="mt-[-100px] h-175 "/>
+      <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "mt-[-100px] h-175"/>
     </div> 
 
-    <section class = "grid grid-cols-2 pt-30">
-      <div class = "w-full h-full">
-        <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "object-cover"/>
-      </div>
-      <div class = "w-full h-full relative">
-        <img src = "aset/photo-1507358522600-9f71e620c44e.webp"  class = "object-cover opacity-25"/>
-        <div class = "absolute inset-0 flex items-center justify-center">
-          <h2 class = "text-white text-center text-3xl"> OUR FAVORITE CUSTOM <br/> ORDER THIS MONTH! </h2>
-        </div>
-      </div>
-    </section>
+    <script>
+      const hamburgerButton = document.getElementById("hamburger-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      hamburgerButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
