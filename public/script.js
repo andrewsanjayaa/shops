@@ -41,9 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((res) => res.json())
     .then((data) => {
       const carousel = document.getElementById("carousel");
-      carousel.innerHTML = ""; // Clear existing items
+      carousel.innerHTML = "";
 
-      // Jika data langsung array: gunakan ini
       data.forEach((item) => {
         const div = document.createElement("div");
         div.className = "carousel-item flex flex-col m-0 p-0";
