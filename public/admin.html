@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Admin</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <!-- JS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://kit.fontawesome.com/2c46fc9d02.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body class="flex flex-col min-h-screen">
+
+        <header class = "w-full py-2 md:py-4 bg-white shadow-lg flex justify-between items-center px-10 sticky top-0">
+            <img src = "aset/photo-1507358522600-9f71e620c44e.webp" alt = "Mystical Neko Logo" class = "h-12">
+            <a href = "#" class = "text-md font-bold text-black hover:text-gray-600 hover:cursor-pointer hover:underline"> Log Out </a>
+        </header>
+        
+        <div class = "flex flex-1">
+            <aside class = "w-64 bg-red-100 flex flex-col border-r border-gray-200 sticky top-20 h-[calc(100vh-5rem)]">
+                <nav class = "text-gray-600 font-semibold text-2xl uppercase">
+                    <a href = "#" class="flex items-center gap-4 p-2 bg-[#FDB0C0] hover:bg-[#FDB0C0]">
+                        <i class = "fa-solid fa-house"></i> <span> Dashboard </span>
+                    </a>
+                    <a href = "#" class = "flex items-center gap-4 p-2 hover:bg-[#FDB0C0]">
+                        <i class = "fas fa-pen-square"></i> <span> Products </span>
+                    </a>
+                    <a href = "#" class = "flex items-center gap-4 p-2 hover:bg-[#FDB0C0]">
+                        <i class = "fas fa-users"></i> <span> Users </span>
+                    </a>
+                    <a href = "#" class = "flex items-center gap-4 p-2 hover:bg-[#FDB0C0]">
+                        <i class="fas fa-comment-dots"></i> <span> Testimonial </span>
+                    </a>
+                    <a href = "#" class = "flex items-center gap-4 p-2 hover:bg-[#FDB0C0]">
+                        <i class = "fas fa-info-circle"></i> <span> About Us </span>
+                    </a>
+                </nav>
+            </aside>
+    
+            <!-- Main Content Dashboard-->
+
+            <main id = "dashboard" class = "flex-1 p-8">
+                <h1 class = "text-3xl font-bold"> Hi, Admin </h1>
+            </main>
+            <!-- End of Content Dashboard-->
+
+            <!-- Main Content Product-->
+
+            <main id = "product" class = "flex-1 p-8 hidden">
+                <h1 class = "text-3xl font-bold pointer-events-none"> Product Management </h1>
+                <button id = "addproductbutton" class = "bg-[#FDB0C0] text-black font-bold px-3 py-1 text-md rounded hover:bg-[#f99fb4] mt-10 ml-270 hover:cursor-pointer">
+                    + Add Product
+                </button>
+
+                <div class = "overflow-x-auto mt-5">
+                    <table class = "min-w-full bg-red-100 text-center pointer-events-none">
+                        <thead>
+                            <tr class = "text-black font-semibold border-b border-gray-400 divide-x divide-gray-400">
+                                <th class = "py-3 px-3"> ProductID </th>
+                                <th class = "py-3 px-3"> Product Name </th>
+                                <th class = "py-3 px-3"> Price </th>
+                                <th class = "py-3 px-3"> Detail </th>
+                                <th class = "py-3 px-3"> Type </th>
+                            </tr>
+                        </thead>
+
+                    <!-- Test for adding product -->
+
+                        <tbody class = "divide-y divide-gray-400">
+                            <tr class = "divide-x divide-gray-400">
+                                <td class = "py-3 px-4"> 001 </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> $10 </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> Test </td>
+                            </tr>
+                            
+                            <tr class = "divide-x divide-gray-400">
+                                <td class = "py-3 px-4"> 002 </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> $10 </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> Test </td>
+                            </tr>
+
+                            <tr class = "divide-x divide-gray-400">
+                                <td class = "py-3 px-4"> 003 </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> $10 </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> Test </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+            
+            <!-- End of Content Product-->
+
+            <!-- Content of Adding Product -->
+
+            <main id = "addproduct" class = "flex-1 p-8 hidden">
+                <h1 class = "text-3xl font-bold"> Add Product </h1>
+                <form class = "space-y-6 mt-8">
+                    <div class = "grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <!-- ID -->
+                      <div>
+                        <label class = "font-semibold text-black block mb-1"> Product ID </label>
+                        </label>
+                        <input id = "productID" type = "text" class = "w-full p-3 bg-red-100 border-none" />
+                      </div>
+                
+                      <!-- Price -->
+                      <div>
+                        <label class = "font-semibold text-black block mb-1"> Price </label>
+                        <input id = "price" type = "text" class = "w-full p-3 bg-red-100 border-none" />
+                      </div>
+                
+                      <!-- Name -->
+                      <div>
+                        <label class = "font-semibold text-black block mb-1"> Product Name </label>
+                        <input id = "productname" type = "text" class = "w-full p-3 bg-red-100 border-none" />
+                      </div>
+                
+                      <!-- Type -->
+                      <div>
+                        <label class = "font-semibold text-black block mb-1"> Type </label>
+                        <input id = "type" type = "text" class = "w-full p-3 bg-red-100 border-none"/>
+                      </div>
+                    </div>
+                
+        
+                    <div>
+                      <label class = "font-semibold text-black block mb-1"> Detail </label>
+                      <textarea id = "details" rows = "5" class = "w-full p-3 bg-red-100 border-none resize-none"> </textarea>
+                    </div>
+                
+                    
+                    <div class = "flex justify-center gap-4">
+                      <button id = "backbutton" type = "button" class = "bg-gray-300 text-black font-bold py-2 px-9 rounded hover:bg-gray-400 cursor-pointer"> Back </button>
+                      <button id = "productsubmit" type = "submit" class = "bg-[#FDB0C0] text-black font-bold py-2 px-6 rounded hover:bg-[#f99fb4] cursor-pointer"> Submit </button>
+                    </div>
+                  </form>
+                  <p id = "productmessage" class = "font-semibold mt-10 text-center text-2xl"></p>
+            </main>
+
+            <!-- End Content of Adding Product-->
+
+            <!-- Main Content of User -->
+            
+            <main id = "user" class = "flex-1 p-8 hidden">
+                <h1 class = "text-3xl font-bold"> Add User </h1>
+                <form class = "space-y-6 mt-8">
+                    <div class = "grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <!-- Username -->
+                      <div>
+                        <label class = "font-semibold text-black block mb-1"> Username </label>
+                        </label>
+                        <input id = "username" type = "text" class = "w-full p-3 bg-red-100 border-none" />
+                      </div>
+                
+                      <!-- Role -->
+                      <div>
+                        <label class = "font-semibold text-black block mb-1"> Role </label>
+                        <input id = "userrole" type = "text" class = "w-full p-3 bg-red-100 border-none" />
+                      </div>
+                
+                      <!-- Password -->
+                      <div>
+                        <label class = "font-semibold text-black block mb-1"> Password </label>
+                        <input id = "userpassword" type = "text" class = "w-full p-3 bg-red-100 border-none" />
+                      </div>
+                    </div>
+                    <div class = "flex justify-end gap-4">
+                        <button id = "usersubmit" type = "submit" class = "bg-[#FDB0C0] text-black font-bold py-2 px-6 rounded hover:bg-[#f99fb4] cursor-pointer"> Submit </button>
+                    </div>
+                </form>
+                <p id = "usermessage" class = "font-semibold mt-10 text-center text-2xl"></p>
+                <h1 class = "text-3xl font-bold"> User Management </h1>
+                <div class = "overflow-x-auto mt-5">
+                    <table class = "min-w-full bg-red-100 text-center pointer-events-none">
+                        <thead>
+                            <tr class = "text-black font-semibold border-b border-gray-400 divide-x divide-gray-400">
+                                <th class = "py-3 px-3"> User ID </th>
+                                <th class = "py-3 px-3"> Username </th>
+                                <th class = "py-3 px-3"> Password </th>
+                                <th class = "py-3 px-3"> Role </th>
+                                <th class = "py-3 px-3"> Detail </th>
+                            </tr>
+                        </thead>
+
+                    <!-- Test for adding user -->
+
+                        <tbody class = "divide-y divide-gray-400">
+                            <tr class = "divide-x divide-gray-400">
+                                <td class = "py-3 px-4"> 001 </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> Test </td>
+                            </tr>
+                            
+                            <tr class = "divide-x divide-gray-400">
+                                <td class = "py-3 px-4"> 002 </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> Test </td>
+                            </tr>
+
+                            <tr class = "divide-x divide-gray-400">
+                                <td class = "py-3 px-4"> 003 </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> Test </td>
+                                <td class = "py-3 px-4"> Test </td>
+                            </tr>
+
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+
+        
+        </div>
+          
+
+          <script>
+
+            //Variable
+
+            const links = document.querySelectorAll("aside nav a");
+            const sections = {
+              dashboard: document.getElementById("dashboard"),
+              product: document.getElementById("product"),
+              addproduct: document.getElementById("addproduct"),
+              user: document.getElementById("user")
+            };
+
+            //Background nav effect
+
+            links.forEach(link => {
+              link.addEventListener('click', function () {
+                links.forEach(el => el.classList.remove("bg-[#FDB0C0]"));
+                this.classList.add("bg-[#FDB0C0]");
+          
+                // Get text for the section
+
+                const sectionName = this.innerText.trim().toLowerCase();
+          
+                // Show and Hide Section
+
+                for (const key in sections) {
+                  if (sectionName.includes(key)) {
+                    sections[key].classList.remove("hidden");
+                  } else {
+                    sections[key].classList.add("hidden");
+                  }
+                }
+              });
+            });
+
+            //Show Add Product Section
+
+            const productbutton = document.getElementById("addproductbutton")
+            productbutton.addEventListener("click", () => {
+                for (const key in sections) {
+                        sections[key].classList.add("hidden");
+                    } 
+                        sections.addproduct.classList.remove("hidden");
+            })
+
+            //Go Back From Add Product Section
+
+            document.getElementById("backbutton").addEventListener("click", () => {
+                for (const key in sections) {
+                    sections[key].classList.add("hidden")
+                }
+                    sections.product.classList.remove("hidden")
+            })
+
+            //Submit Message for Product
+
+            const productsubmit = document.getElementById("productsubmit");
+            const productmessage = document.getElementById("productmessage");
+
+            productsubmit.addEventListener("click", () => {
+                event.preventDefault();
+                productmessage.textContent = "✅ Product successfully added!";
+                productmessage.style.color = "green";
+
+                setTimeout(() => {
+                    productmessage.textContent = "";
+                }, 3000);
+            })
+
+            //Submit Message for User
+
+            const usersubmit = document.getElementById("usersubmit");
+            const usermessage = document.getElementById("usermessage");
+
+            usersubmit.addEventListener("click", () => {
+                event.preventDefault();
+                usermessage.textContent = "✅ User successfully added!";
+                usermessage.style.color = "green";
+
+                setTimeout(() => {
+                    usermessage.textContent = "";
+                }, 3000);
+            })
+
+          </script>
+
+    
+  </body>
+</html>
