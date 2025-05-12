@@ -98,49 +98,7 @@
 
     <div class="overflow-x-auto">
       <div class="carousel bg-neutral rounded-box mx-3" id="carousel">
-        <script>
-          window.onload = function () {
-            loadProducts();
-          };
-          async function loadProducts() {
-            try {
-              const res = await fetch("http://localhost:3000/api/products");
-              const data = await res.json();
-
-              if (data.success) {
-                const carousel = document.getElementById("carousel");
-                carousel.innerHTML = ""; // Clear existing items
-
-                data.data.forEach((item) => {
-                  const div = document.createElement("div");
-                  div.className = "carousel-item flex flex-col m-0 p-0";
-
-                  div.innerHTML = `
-            <img
-              src="./aset/${item.image}"
-              class="rounded-box w-2/3"
-            />
-            <p class="text-lg font-bold dark:text-white text-center pt-3 w-2/3">
-              ${item.name}
-            </p>
-            <p class="text-md font-bold dark:text-white text-center w-2/3">
-              ${item.description}
-            </p>
-          `;
-
-                  carousel.appendChild(div);
-                });
-              } else {
-                console.error("Failed to fetch products");
-              }
-            } catch (error) {
-              console.error("Error loading products:", error);
-            }
-          }
-
-          loadProducts();
-        </script>
-      </div>
+       
     </div>
 
     <section class="relative h-screen text-white overflow-x-hidden mt-8">
@@ -233,50 +191,6 @@
       </div>
     </div>
 
-    <script>
-      // Attach to the form submit, not the button
-      document
-        .getElementById("contact")
-        .addEventListener("submit", function (event) {
-          event.preventDefault(); // Prevent the page from refreshing
-
-          const commentValue = document.getElementById("comment").value;
-
-          if (commentValue.trim() !== "") {
-            document.getElementById("message").textContent = 3;
-            ("Thank you for your message!");
-            document.getElementById("contact").reset();
-          } else {
-            document.getElementById("message").textContent =
-              "Please write something first.";
-          }
-        });
-    </script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const navbar = document.getElementById("navbar");
-        const navbarHeight = navbar.offsetHeight;
-
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > navbarHeight) {
-            navbar.classList.add("bg-white", "text-black");
-            navbar.classList.remove("bg-transparent", "text-white");
-          } else {
-            navbar.classList.add("bg-transparent", "text-white");
-            navbar.classList.remove("bg-white", "text-black");
-          }
-        });
-      });
-    </script>
-
-    <script>
-      const hamburgerButton = document.getElementById("hamburger-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      hamburgerButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
