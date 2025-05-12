@@ -1,6 +1,5 @@
-// Attach to the form submit, not the button
 document.getElementById("contact").addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent the page from refreshing
+  event.preventDefault();
 
   const commentValue = document.getElementById("comment").value;
 
