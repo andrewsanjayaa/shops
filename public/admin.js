@@ -6,6 +6,8 @@ const sections = {
   product: document.getElementById("product"),
   addproduct: document.getElementById("addproduct"),
   user: document.getElementById("user"),
+  testimonial: document.getElementById("testimonial"),
+  about: document.getElementById("about"),
 };
 
 //Background nav effect
