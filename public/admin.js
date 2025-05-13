@@ -69,5 +69,9 @@ const urlParams = new URLSearchParams(window.location.search);
 const message = urlParams.get("msg");
 
 if (message) {
-  alert(decodeURIComponent(message));
+  Swal.fire({
+    title: "Good job!",
+    text: decodeURIComponent(message),
+    icon: "success",
+  });
 }
