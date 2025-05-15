@@ -95,44 +95,13 @@
                 <th class="py-3 px-3">ProductID</th>
                 <th class="py-3 px-3">Product Image</th>
                 <th class="py-3 px-3">Product Name</th>
-                <th class="py-3 px-3">Price</th>
                 <th class="py-3 px-3">Detail</th>
+                <th class="py-3 px-3">Price</th>
                 <th class="py-3 px-3">Update Button</th>
               </tr>
             </thead>
 
-            <!-- Test for adding product -->
-
-            <tbody class="divide-y divide-gray-400">
-              <tr class="divide-x divide-gray-400">
-                <td class="py-3 px-4 pointer-events-none">001</td>
-                <td class="py-3 px-4 pointer-events-none">
-                  <img
-                    src="aset/photo-1507358522600-9f71e620c44e.webp"
-                    class="h-24 mx-auto"
-                  />
-                </td>
-                <td class="py-3 px-4 pointer-events-none">Test</td>
-                <td class="py-3 px-4 pointer-events-none">Test</td>
-                <td class="py-3 px-4 pointer-events-none">Test</td>
-                <td class="py-3 w-35">
-                  <button
-                    id="editbutton"
-                    type="button"
-                    class="bg-gray-300 text-black font-medium py-1 px-2 rounded hover:bg-gray-400 hover:cursor-pointer"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    id="deletebutton"
-                    type="button"
-                    class="bg-red-500 text-black font-medium py-1 px-2 rounded hover:bg-red-400 hover:cursor-pointer"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            </tbody>
+            <tbody class="divide-y divide-gray-400" id="producttable"></tbody>
           </table>
         </div>
       </main>
@@ -143,17 +112,23 @@
 
       <main id="addproduct" class="flex-1 p-8 hidden">
         <h1 class="text-3xl font-bold">Add Product</h1>
-        <form class="space-y-6 mt-8">
+        <form
+          class="space-y-6 mt-8"
+          method="post"
+          action="/api/products/addproduct"
+          enctype="multipart/form-data"
+        >
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- ID -->
+            <!-- Name -->
             <div>
               <label class="font-semibold text-black block mb-1">
-                Product ID
+                Product Name
               </label>
               <input
-                id="productID"
+                id="productname"
                 type="text"
                 class="w-full p-3 bg-red-100 border-none focus:outline-none"
+                name="productname"
               />
             </div>
 
@@ -164,18 +139,7 @@
                 id="price"
                 type="text"
                 class="w-full p-3 bg-red-100 border-none focus:outline-none"
-              />
-            </div>
-
-            <!-- Name -->
-            <div>
-              <label class="font-semibold text-black block mb-1">
-                Product Name
-              </label>
-              <input
-                id="productname"
-                type="text"
-                class="w-full p-3 bg-red-100 border-none focus:outline-none"
+                name="productprice"
               />
             </div>
 
@@ -185,6 +149,7 @@
               <input
                 id="image"
                 type="file"
+                name="productimage"
                 class="mt-2 block w-55 text-sm text-white bg-red-200 px-4 py-2 rounded cursor-pointer"
               />
             </div>
@@ -196,6 +161,7 @@
               id="details"
               rows="5"
               class="w-full p-3 bg-red-100 border-none resize-none focus:outline-none"
+              name="productdetail"
             ></textarea>
           </div>
 
@@ -216,10 +182,6 @@
             </button>
           </div>
         </form>
-        <p
-          id="productmessage"
-          class="font-semibold mt-10 text-center text-2xl"
-        ></p>
       </main>
 
       <!-- End Content of Adding Product-->
@@ -413,7 +375,11 @@
       <main id="about" class="flex-1 p-8 hidden">
         <h1 class="text-3xl font-bold">About Us</h1>
         <form id="editor-form" class="mt-10" method="POST" action="/about/edit">
-          <textarea id="editor" name="description" class="h-50 bg-red-100"></textarea>
+          <textarea
+            id="editor"
+            name="description"
+            class="h-50 bg-red-100"
+          ></textarea>
           <button type="submit">Submit</button>
         </form>
       </main>
@@ -430,6 +396,5 @@
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.2.6/js/froala_editor.pkgd.min.js"
     ></script>
-    
   </body>
 </html>

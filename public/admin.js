@@ -137,6 +137,7 @@ document.addEventListener("click", async (e) => {
   }
 });
 
+// About
 document.addEventListener("DOMContentLoaded", () => {
   new FroalaEditor("#editor", {
     events: {
@@ -164,3 +165,46 @@ document.getElementById("editor-form").addEventListener("submit", function (e) {
   editorInstance.events.trigger("form.submit");
 });
 
+// Get Product
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("/api/products")
+    .then((res) => res.json())
+    .then((data) => {
+      const producttable = document.getElementById("producttable");
+      producttable.innerHTML = "";
+
+      data.forEach((item) => {
+        const row = document.createElement("tr");
+        row.className = "divide-x divide-gray-400";
+
+        row.innerHTML = `
+          <td class="py-3 px-4 pointer-events-none">${item.id}</td>
+          <td class="py-3 px-4 pointer-events-none">
+            <img src="aset/${item.image}" class="h-24 mx-auto" />
+          </td>
+          <td class="py-3 px-4 pointer-events-none">${item.name}</td>
+          <td class="py-3 px-4 pointer-events-none">${item.description}</td>
+          <td class="py-3 px-4 pointer-events-none">${item.stock}</td>
+          <td class="py-3 w-35">
+            <button
+              id="editbutton"
+              type="button"
+              class="bg-gray-300 text-black font-medium py-1 px-2 rounded hover:bg-gray-400 hover:cursor-pointer"
+            >
+              Edit
+            </button>
+            <button
+              id="deletebutton"
+              type="button"
+              class="bg-red-500 text-black font-medium py-1 px-2 rounded hover:bg-red-400 hover:cursor-pointer"
+            >
+              Delete
+            </button>
+          </td>
+        `;
+
+        producttable.appendChild(row);
+      });
+    })
+    .catch((err) => console.error("Gagal fetch data products:", err));
+});
