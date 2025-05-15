@@ -67,11 +67,11 @@
         <a class="btn btn-ghost text-xl px-6 py-4 block"> daisyUI </a>
 
         <!-- Mobile Menu Items -->
-        <ul class = "menu menu-horizontal px-1">
-          <li><a href = "#"> Home </a></li>
-          <li><a href = "#"> About Us </a></li>
-          <li><a href = "#"> Products </a></li>
-          <li><a href = "#"> Testimonial </a></li>
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="#"> Home </a></li>
+          <li><a href="#"> About Us </a></li>
+          <li><a href="#"> Products </a></li>
+          <li><a href="#"> Testimonial </a></li>
         </ul>
       </div>
     </nav>
@@ -91,18 +91,9 @@
 
     <section class="flex md:justify-around lg:flex-row md:flex-row flex-col">
       <div
+        id="about_text"
         class="items-center flex justify-center text-justify lg:w-1/3 md:w-2/3 lg:px-0 md:px-5 px-5 md:pb-0 pb-5 text-2xl dark:text-white"
-      >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod non
-        ante vitae molestie. Sed elementum turpis vitae hendrerit gravida. Cras
-        ligula orci, posuere a augue ut, facilisis efficitur leo. Praesent
-        laoreet justo sem, vitae rutrum eros finibus a. Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit. Sed euismod non ante vitae molestie.
-        Sed elementum turpis vitae hendrerit gravida. Cras ligula orci, posuere
-        a augue ut, facilisis efficitur leo. Praesent laoreet justo sem, vitae
-        rutrum eros finibus a.Cras ligula orci, posuere a augue ut, facilisis
-        efficitur leo. Praesent laoreet justo.
-      </div>
+      ></div>
       <div class="items-center lg:px-0 md:px-5 px-10">
         <img
           src="aset/photo-1507358522600-9f71e620c44e.webp"
@@ -110,28 +101,37 @@
         />
       </div>
     </section>
-    
+
     <section class="flex flex-col items-center px-4 py-30">
       <div class="flex flex-col md:flex-row justify-center md:gap-100 gap-10">
-        <img src="aset/photo-1507358522600-9f71e620c44e.webp" class=" object-cover w-96 h-86"/>
-        <img src="aset/photo-1507358522600-9f71e620c44e.webp" class=" object-cover w-96 h-92"/>
+        <img
+          src="aset/photo-1507358522600-9f71e620c44e.webp"
+          class="object-cover w-96 h-86"
+        />
+        <img
+          src="aset/photo-1507358522600-9f71e620c44e.webp"
+          class="object-cover w-96 h-92"
+        />
       </div>
-      <div class="max-w-3xl mt-15 space-y-7 text-white text-xl text-justify md:px-0 px-4">
+      <div
+        class="max-w-3xl mt-15 space-y-7 text-white text-xl text-justify md:px-0 px-4"
+      >
         <p>
-          Excepteur efficient emerging, minim veniam anim cloying aute carefully curated gauche.
-          Espresso exquisite perfect nostrud nisi intricate. Punctual adipisicing Borzoi, essential
-          lovely tempor eiusmod irure. Exclusive izakaya charming Quezon City impeccable aute
-          quality of life soft power pariatur occaecat discerning. Qui wardrobe aliquip, et
+          Excepteur efficient emerging, minim veniam anim cloying aute carefully
+          curated gauche. Espresso exquisite perfect nostrud nisi intricate.
+          Punctual adipisicing Borzoi, essential lovely tempor eiusmod irure.
+          Exclusive izakaya charming Quezon City impeccable aute quality of life
+          soft power pariatur occaecat discerning. Qui wardrobe aliquip, et
           Amadeus rock opera.
         </p>
         <p>
-          Exquisite sophisticated iconic cutting-edge laborum deserunt esse bureaux cupidatat id
-          minim. Sharp classic the best commodo nostrud delightful. Conversation aute wifey id.
-          Qui sunt remarkable deserunt intricate airport excepteur classic esse riot girl.
+          Exquisite sophisticated iconic cutting-edge laborum deserunt esse
+          bureaux cupidatat id minim. Sharp classic the best commodo nostrud
+          delightful. Conversation aute wifey id. Qui sunt remarkable deserunt
+          intricate airport excepteur classic esse riot girl.
         </p>
       </div>
     </section>
-  
 
     <script>
       const hamburgerButton = document.getElementById("hamburger-btn");
@@ -139,6 +139,17 @@
 
       hamburgerButton.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        fetch("/about")
+          .then((res) => res.json())
+          .then((data) => {
+            const aboutText = document.getElementById("about_text");
+            aboutText.innerHTML = data.description;
+          });
       });
     </script>
   </body>
