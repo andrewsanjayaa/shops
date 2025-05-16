@@ -176,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
       data.forEach((item) => {
         const row = document.createElement("tr");
         row.className = "divide-x divide-gray-400";
+        const productmodal = `product_modal_${item.id}`;
 
         row.innerHTML = `
           <td class="py-3 px-4 pointer-events-none">${item.id}</td>
@@ -186,20 +187,31 @@ document.addEventListener("DOMContentLoaded", () => {
           <td class="py-3 px-4 pointer-events-none">${item.description}</td>
           <td class="py-3 px-4 pointer-events-none">${item.stock}</td>
           <td class="py-3 w-35">
-            <button
-              id="editbutton"
-              type="button"
-              class="bg-gray-300 text-black font-medium py-1 px-2 rounded hover:bg-gray-400 hover:cursor-pointer"
-            >
-              Edit
-            </button>
-            <button
-              id="deletebutton"
-              type="button"
-              class="bg-red-500 text-black font-medium py-1 px-2 rounded hover:bg-red-400 hover:cursor-pointer"
-            >
-              Delete
-            </button>
+            <div class="flex justify-center">
+              <label for="${productmodal}" class="btn btn-sm bg-gray-300 text-black font-medium rounded hover:bg-gray-400 w-12 text-center items-center">Edit</label>
+              <button type="button" class="btn deleteproduct-btn btn-sm bg-red-300 text-black font-medium rounded hover:bg-red-400 w-12 text-center items-center" data-id="${item.id}">Delete</button>
+            </div>
+            <input type="checkbox" id="${productmodal}" class="modal-toggle" />
+            <div class="modal" role="dialog">
+              <div class="modal-box">
+                <h3 class="font-bold text-lg mb-4">Edit User</h3>
+                <form method="POST" action="/api/products/update" enctype="multipart/form-data">
+                  <input type="hidden" name="id" value="${item.id}">
+                  <label class = "font-semibold text-black block mb-1 text-left" for "productname"> Product Name </label>
+                  <input name="productname" value="${item.name}" class="w-full p-3 bg-red-100 border-none focus:outline-no" />
+                  <label class = "font-semibold text-black block mb-1 text-left" for "productprice"> Price </label>
+                  <input name="productprice" value="${item.stock}" class="w-full p-3 bg-red-100 border-none focus:outline-no" />
+                  <label class = "font-semibold text-black block mb-1 text-left" for "productimage"> New Image </label>
+                  <input name="productimage" type="file" placeholder="New Password" class="w-full p-3 bg-red-100 border-none focus:outline-no" />
+                  <label class = "font-semibold text-black block mb-1 text-left" for "productdetail"> Detail </label>
+                  <input name="productdetail" value="${item.description}" class="w-full p-3 bg-red-100 border-none focus:outline-no" />
+                  <div class="modal-action">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <label for="${productmodal}" class="btn">Close</label>
+                  </div>
+                </form>
+              </div>
+            </div>
           </td>
         `;
 
@@ -207,4 +219,24 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     })
     .catch((err) => console.error("Gagal fetch data products:", err));
+});
+
+// Delete Product
+document.addEventListener("click", async (e) => {
+  if (e.target.matches(".deleteproduct-btn")) {
+    const userId = e.target.dataset.id;
+
+    if (confirm("Yakin ingin menghapus product ini?")) {
+      const res = await fetch(`/api/products/delete/${userId}`, { method: "DELETE" });
+
+      if (res.ok) {
+        const result = await res.json();
+        window.location.href =
+          window.location.origin + window.location.pathname;
+      } else {
+        const result = await res.json();
+        alert(result.message || "Gagal menghapus user");
+      }
+    }
+  }
 });
