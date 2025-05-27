@@ -1,5 +1,7 @@
 //Variable
 
+const { testimoni } = require("../controllers/testiController");
+
 const links = document.querySelectorAll("aside nav a");
 const sections = {
   dashboard: document.getElementById("dashboard"),
@@ -227,7 +229,9 @@ document.addEventListener("click", async (e) => {
     const userId = e.target.dataset.id;
 
     if (confirm("Yakin ingin menghapus product ini?")) {
-      const res = await fetch(`/api/products/delete/${userId}`, { method: "DELETE" });
+      const res = await fetch(`/api/products/delete/${userId}`, {
+        method: "DELETE",
+      });
 
       if (res.ok) {
         const result = await res.json();
@@ -239,4 +243,55 @@ document.addEventListener("click", async (e) => {
       }
     }
   }
+});
+
+// Get Product
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("/testimonials")
+    .then((res) => res.json())
+    .then((data) => {
+      const producttable = document.getElementById("testimonialtable");
+      testimonialtable.innerHTML = "";
+
+      data.forEach((item) => {
+        const row = document.createElement("tr");
+        row.className = "divide-x divide-gray-400";
+        const testimodal = `testi_modal_${item.id}`;
+
+        row.innerHTML = `
+          <td class="py-3 px-4 pointer-events-none">${item.id}</td>
+          <td class="py-3 px-4 pointer-events-none">
+            <img src="aset/${item.image}" class="h-24 mx-auto" />
+          </td>
+          <td class="py-3 px-4 pointer-events-none">${item.detail}</td>
+          <td class="py-3 px-4 pointer-events-none">${item.name}</td>
+          <td class="py-3 w-35">
+            <div class="flex justify-center">
+              <label for="${testimodal}" class="btn btn-sm bg-gray-300 text-black font-medium rounded hover:bg-gray-400 w-12 text-center items-center">Edit</label>
+              <button type="button" class="btn deleteproduct-btn btn-sm bg-red-300 text-black font-medium rounded hover:bg-red-400 w-12 text-center items-center" data-id="${item.id}">Delete</button>
+            </div>
+            <input type="checkbox" id="${testimodal}" class="modal-toggle" />
+            <div class="modal" role="dialog">
+              <div class="modal-box">
+                <h3 class="font-bold text-lg mb-4">Edit User</h3>
+                <form method="POST" action="/api/products/update" enctype="multipart/form-data">
+                  <input type="hidden" name="id" value="${item.id}">
+                  <label class = "font-semibold text-black block mb-1 text-left" for "detailimage"> New Image </label>
+                  <input name="detailimage" type="file" class="w-full p-3 bg-red-100 border-none focus:outline-no" />
+                  <label class = "font-semibold text-black block mb-1 text-left" for "testidetail"> Detail </label>
+                  <input name="testidetail" value="${item.detail}" class="w-full p-3 bg-red-100 border-none focus:outline-no" />
+                  <div class="modal-action">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <label for="${testimodal}" class="btn">Close</label>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </td>
+        `;
+
+        producttable.appendChild(row);
+      });
+    })
+    .catch((err) => console.error("Gagal fetch data products:", err));
 });
