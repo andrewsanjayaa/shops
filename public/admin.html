@@ -270,12 +270,18 @@
 
       <main id="testimonial" class="flex-1 p-8 hidden">
         <h1 class="text-3xl font-bold">Add Testimonial</h1>
-        <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form
+          class="grid grid-cols-1 md:grid-cols-2 gap-6"
+          method="POST"
+          enctype="multipart/form-data"
+          action="/testimonials/create"
+        >
           <div class="col-span-2">
             <label class="block mb-2 font-medium mt-10"> Upload File </label>
             <input
               id="file-upload"
               type="file"
+              name="testiimage"
               class="block w-55 text-sm text-white bg-red-200 px-4 py-2 rounded cursor-pointer"
             />
           </div>
@@ -284,6 +290,7 @@
           <div>
             <label class="block mb-2 text-sm font-medium"> Name </label>
             <input
+              name="testiuser"
               type="text"
               class="w-full p-3 bg-red-100 border-none focus:outline-none"
             />
@@ -292,16 +299,21 @@
           <!-- Product Type -->
           <div>
             <label class="block mb-2 text-sm font-medium"> Product </label>
-            <input
+            <select
+              name="testiproduct"
+              id="testiproduct"
               type="text"
               class="w-full p-3 bg-red-100 border-none focus:outline-none"
-            />
+            >
+              <option value="">Select Product</option>
+            </select>
           </div>
 
           <!-- Detail -->
           <div class="col-span-2">
             <label class="block mb-2 text-sm font-medium"> Detail </label>
             <textarea
+              name="testidetail"
               rows="5"
               class="w-full p-3 bg-red-100 border-none resize-none focus:outline-none"
             ></textarea>
@@ -317,8 +329,6 @@
             </button>
           </div>
         </form>
-        <p id="message" class="font-semibold mt-10 text-center text-2xl"></p>
-        <h1 class="text-3xl font-bold">Testimonial Management</h1>
         <div class="overflow-x-auto mt-5">
           <table class="min-w-full bg-red-100 text-center pointer-events-none">
             <thead>
@@ -335,13 +345,12 @@
 
             <!-- Test for adding testimonial -->
 
-            <tbody
-              class="divide-y divide-gray-400"
-              id="testimonialtable"
-            ></tbody>
+            <tbody id="testimonialtable"></tbody>
           </table>
         </div>
       </main>
+
+      
 
       <!-- End Content of Testimonial-->
 
