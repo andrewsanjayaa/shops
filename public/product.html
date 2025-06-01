@@ -1,55 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Products List</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- DaisyUI (tailwind plugin) -->
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    <title>Laravel</title>
 
-  <nav class="p-4 bg-gray-100 dark:bg-gray-800 shadow-md flex justify-between">
-    <div class="text-xl font-bold">My Shop</div>
-    <ul class="flex space-x-6">
-      <li><a href="index.html" class="hover:underline">Home</a></li>
-      <li><a href="products.html" class="font-semibold underline">Products</a></li>
-      <li><a href="about.html" class="hover:underline">About</a></li>
-    </ul>
-  </nav>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <!-- JS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
 
-  <main class="max-w-7xl mx-auto p-6">
-    <h1 class="text-4xl font-bold mb-8">All Products</h1>
-    <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-      <!-- Product cards akan muncul di sini -->
-    </div>
-  </main>
-
-  fetch('/api/products')
-  .then(res => res.json())
-  .then(products => {
-    const container = document.getElementById('products-container');
-    container.innerHTML = ''; // bersihkan dulu
-
-    products.forEach(p => {
-      const card = document.createElement('div');
-      card.className = "card bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden";
-
-      card.innerHTML = `
-        <img src="${p.image}" alt="${p.name}" class="h-48 w-full object-cover"/>
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-2">${p.name}</h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">${p.description}</p>
-          <p class="text-lg font-bold">Rp${p.price.toLocaleString('id-ID')}</p>
+  <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] min-h-screen">
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-white text-black font-bold"
+      id="navbar"
+    >
+      <div class="navbar shadow-sm">
+        <!-- Horizontal Menu with Dropdown (Visible on Large Screens) -->
+        <div class="flex-1 lg:flex hidden">
+          <ul class="menu menu-horizontal px-1">
+            <li><a href="index.html"> Home </a></li>
+            <li><a href="about.html"> About Us </a></li>
+            <li><a href="product.html"> Products </a></li>
+            <li><a href="testimonial.html"> Testimonial </a></li>
+          </ul>
         </div>
-      `;
-      container.appendChild(card);
-    });
-  })
-  .catch(err => console.error('Error fetching products:', err));
-    
 
-</body>
+        <!-- Logo on the Right -->
+        <div class="flex-none ml-auto">
+          <a class="btn btn-ghost text-xl">daisyUI</a>
+        </div>
+
+        <!-- Hamburger Button (Visible on mobile) -->
+        <div class="lg:hidden flex-none ml-auto">
+          <button id="hamburger-btn" class="btn btn-ghost text-xl">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="lg:hidden hidden fixed top-0 left-0 w-3/4 min-h-screen bg-gray-800 text-white z-50"
+        id="mobile-menu"
+      >
+        <!-- Logo or Button Above the Menu -->
+        <a class="btn btn-ghost text-xl px-6 py-4 block"> daisyUI </a>
+
+        <!-- Mobile Menu Items -->
+        <ul class="menu menu-vertical px-6 py-6 my-3">
+          <li><a href="#"> Home </a></li>
+          <li><a href="#"> About Us </a></li>
+          <li><a href="#"> Products </a></li>
+          <li><a href="#"> Testimonial </a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class = "mx-auto py-32 gap-10 grid md:grid-cols-2">
+      <div class = "flex justify-center">
+        <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "rounded-3xl max-w-md h-110"/>        
+      </div>
+      <div class = "flex flex-col text-white justify-center mt-[-130px]">
+        <h1 class = "text-4xl font-bold mb-5 font-bold"> ROXANNE </h1>
+        <p class = "text-2xl text-gray-600"> Bracelet </p>
+        <p class = "text-2xl font-bold mt-5"> Rp25.000,00 </p>
+        <p class = "text-lg text-gray-600 mt-2"> Size: <br> Diameter 17cm </p>
+        <p class = "text-lg text-gray-600 mt-8"> Text box for additional details or fine print </p>
+      </div>
+    </section>
+
+    <h2 class = "text-3xl font-semibold mb-6 text-white ml-5 mb-[5px]"> Related products </h2>
+    <section class = "w-full mx-auto px-4 py-10 bg-gradient-to-r from-neutral-50 via-pink-100 to-gray-50 flex justify-center">
+
+      <div class = "carousel overflow-x-auto gap-20">
+        <!-- Product 1 -->
+        <div class = "overflow-hidden w-100 flex-shrink-0">
+          <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "h-115 object-cover"/>
+          <div class = "p-4">
+            <h3 class = "text-2xl font-medium"> Product 1 </h3>
+            <p class = "text-md text-gray-600 mt-2"> Description of first product </p>
+            <p class = "text-base font-semibold mt-2"> $10.99 </p>
+          </div>
+        </div>
+
+        <div class= "overflow-hidden w-100 flex-shrink-0">
+          <img src= " aset/photo-1507358522600-9f71e620c44e.webp" class= "h-115 object-cover"/>
+          <div class = "p-4">
+            <h3 class = "text-2xl font-medium"> Product 2 </h3>
+            <p class = "text-md text-gray-600 mt-2"> Description of first product</p>
+            <p class = "text-base font-semibold mt-2"> $10.99 </p>
+          </div>
+        </div>
+
+        <div class = "overflow-hidden w-100 flex-shrink-0">
+          <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "h-115 object-cover"/>
+          <div class = "p-4">
+            <h3 class = "text-2xl font-medium"> Product  </h3>
+            <p class = "text-md text-gray-600 mt-2"> Description of first product </p>
+            <p class = "text-base font-semibold mt-2"> $10.99 </p>
+          </div>
+        </div>
+    </section>
+
+    <!-- Second Section-->
+    <section class = "w-full mx-auto px-4 py-10 bg-gradient-to-r from-neutral-50 via-pink-100 to-gray-50 mt-20 flex justify-center">
+
+      <div class = "carousel overflow-x-auto gap-20">
+        <!-- Product 1 -->
+        <div class = "overflow-hidden w-100 flex-shrink-0">
+          <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "h-115 object-cover"/>
+          <div class = "p-4">
+            <h3 class = "text-2xl font-medium"> Product 4 </h3>
+            <p class = "text-md text-gray-600 mt-2"> Description of first product </p>
+            <p class = "text-base font-semibold mt-2"> $10.99 </p>
+          </div>
+        </div>
+
+        <div class= "overflow-hidden w-100 flex-shrink-0">
+          <img src= " aset/photo-1507358522600-9f71e620c44e.webp" class= "h-115 object-cover"/>
+          <div class = "p-4">
+            <h3 class = "text-2xl font-medium"> Product 5 </h3>
+            <p class = "text-md text-gray-600 mt-2 "> Description of first product </p>
+            <p class = "text-base font-semibold mt-2"> $10.99 </p>
+          </div>
+        </div>
+
+        <div class = "overflow-hidden w-100 flex-shrink-0">
+          <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "h-115 object-cover"/>
+          <div class = "p-4">
+            <h3 class = "text-2xl font-medium"> Product 6 </h3>
+            <p class = "text-md text-gray-600 mt-2"> Description of first product </p>
+            <p class = "text-base font-semibold mt-2"> $10.99 </p>
+          </div>
+        </div>
+
+    </section>
+
+
+    <script>
+      const hamburgerButton = document.getElementById("hamburger-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      hamburgerButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+    <div id="footer"></div>
+    <script src="script.js"></script>
+  </body>
 </html>
