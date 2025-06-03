@@ -3,169 +3,125 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Showcase</title>
 
-    <title>Laravel</title>
-
-    <!-- Fonts -->
+    <!-- Fonts & Styles -->
     <link rel="preconnect" href="https://fonts.bunny.net" />
-    <!-- JS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@5"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
   <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] min-h-screen">
-    <nav
-      class="fixed top-0 left-0 right-0 z-50 bg-white text-black font-bold"
-      id="navbar"
-    >
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white text-black font-bold" id="navbar">
       <div class="navbar shadow-sm">
-        <!-- Horizontal Menu with Dropdown (Visible on Large Screens) -->
         <div class="flex-1 lg:flex hidden">
           <ul class="menu menu-horizontal px-1">
-            <li><a href="index.html"> Home </a></li>
-            <li><a href="about.html"> About Us </a></li>
-            <li><a href="product.html"> Products </a></li>
-            <li><a href="testimonial.html"> Testimonial </a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="testimonial.html">Testimonial</a></li>
           </ul>
         </div>
-
-        <!-- Logo on the Right -->
         <div class="flex-none ml-auto">
           <a class="btn btn-ghost text-xl">daisyUI</a>
         </div>
-
-        <!-- Hamburger Button (Visible on mobile) -->
         <div class="lg:hidden flex-none ml-auto">
           <button id="hamburger-btn" class="btn btn-ghost text-xl">
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
       </div>
-
-      <div
-        class="lg:hidden hidden fixed top-0 left-0 w-3/4 min-h-screen bg-gray-800 text-white z-50"
-        id="mobile-menu"
-      >
-        <!-- Logo or Button Above the Menu -->
-        <a class="btn btn-ghost text-xl px-6 py-4 block"> daisyUI </a>
-
-        <!-- Mobile Menu Items -->
+      <div class="lg:hidden hidden fixed top-0 left-0 w-3/4 min-h-screen bg-gray-800 text-white z-50" id="mobile-menu">
+        <a class="btn btn-ghost text-xl px-6 py-4 block">daisyUI</a>
         <ul class="menu menu-vertical px-6 py-6 my-3">
-          <li><a href="#"> Home </a></li>
-          <li><a href="#"> About Us </a></li>
-          <li><a href="#"> Products </a></li>
-          <li><a href="#"> Testimonial </a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Testimonial</a></li>
         </ul>
       </div>
     </nav>
 
-    <section class = "mx-auto py-32 gap-10 grid md:grid-cols-2">
-      <div class = "flex justify-center">
-        <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "rounded-3xl max-w-md h-110"/>        
-      </div>
-      <div class = "flex flex-col text-white justify-center mt-[-130px]">
-        <h1 class = "text-4xl font-bold mb-5 font-bold"> ROXANNE </h1>
-        <p class = "text-2xl text-gray-600"> Bracelet </p>
-        <p class = "text-2xl font-bold mt-5"> Rp25.000,00 </p>
-        <p class = "text-lg text-gray-600 mt-2"> Size: <br> Diameter 17cm </p>
-        <p class = "text-lg text-gray-600 mt-8"> Text box for additional details or fine print </p>
-      </div>
-    </section>
+    <!-- Products Grid -->
+    <section class="w-full mx-auto px-6 py-10 bg-gradient-to-r from-neutral-50 via-pink-100 to-gray-50 mt-24">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
 
-    <h2 class = "text-3xl font-semibold mb-6 text-white ml-5 mb-[5px]"> Related products </h2>
-    <section class = "w-full mx-auto px-4 py-10 bg-gradient-to-r from-neutral-50 via-pink-100 to-gray-50 flex justify-center">
+        <!-- Product Card Template -->
+        <!-- Repeat this block and change the link and content as needed -->
 
-      <div class = "carousel overflow-x-auto gap-20">
         <!-- Product 1 -->
-        <div class = "overflow-hidden w-100 flex-shrink-0">
-          <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "h-115 object-cover"/>
-          <div class = "p-4">
-            <h3 class = "text-2xl font-medium"> Product 1 </h3>
-            <p class = "text-md text-gray-600 mt-2"> Description of first product </p>
-            <p class = "text-base font-semibold mt-2"> $10.99 </p>
-          </div>
+        <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
+          <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="rounded-xl w-full h-72 object-cover mb-6" />
+          <h3 class="text-3xl font-bold mb-1">Product 1</h3>
+          <p class="text-gray-600 mb-1">Description of first product</p>
+          <p class="text-xl font-semibold mb-1">$10.99</p>
+          <p class="text-sm text-gray-500 mb-4">Size: Diameter 17cm</p>
+          <a href="productview.html?id=1" class="btn btn-outline btn-primary w-full">View Product</a>
         </div>
 
-        <div class= "overflow-hidden w-100 flex-shrink-0">
-          <img src= " aset/photo-1507358522600-9f71e620c44e.webp" class= "h-115 object-cover"/>
-          <div class = "p-4">
-            <h3 class = "text-2xl font-medium"> Product 2 </h3>
-            <p class = "text-md text-gray-600 mt-2"> Description of first product</p>
-            <p class = "text-base font-semibold mt-2"> $10.99 </p>
-          </div>
+        <!-- Product 2 -->
+        <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
+          <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="rounded-xl w-full h-72 object-cover mb-6" />
+          <h3 class="text-3xl font-bold mb-1">Product 2</h3>
+          <p class="text-gray-600 mb-1">Elegant bracelet with style</p>
+          <p class="text-xl font-semibold mb-1">$15.99</p>
+          <p class="text-sm text-gray-500 mb-4">Size: Diameter 18cm</p>
+          <a href="productview.html?id=2" class="btn btn-outline btn-primary w-full">View Product</a>
         </div>
 
-        <div class = "overflow-hidden w-100 flex-shrink-0">
-          <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "h-115 object-cover"/>
-          <div class = "p-4">
-            <h3 class = "text-2xl font-medium"> Product  </h3>
-            <p class = "text-md text-gray-600 mt-2"> Description of first product </p>
-            <p class = "text-base font-semibold mt-2"> $10.99 </p>
-          </div>
+        <!-- Product 3 -->
+        <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
+          <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="rounded-xl w-full h-72 object-cover mb-6" />
+          <h3 class="text-3xl font-bold mb-1">Product 3</h3>
+          <p class="text-gray-600 mb-1">Casual wear bracelet</p>
+          <p class="text-xl font-semibold mb-1">$12.49</p>
+          <p class="text-sm text-gray-500 mb-4">Size: Diameter 17.5cm</p>
+          <a href="productview.html?id=3" class="btn btn-outline btn-primary w-full">View Product</a>
         </div>
+
+        <!-- Product 4 -->
+        <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
+          <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="rounded-xl w-full h-72 object-cover mb-6" />
+          <h3 class="text-3xl font-bold mb-1">Product 4</h3>
+          <p class="text-gray-600 mb-1">Stylish and modern</p>
+          <p class="text-xl font-semibold mb-1">$14.99</p>
+          <p class="text-sm text-gray-500 mb-4">Size: Diameter 16.8cm</p>
+          <a href="productview.html?id=4" class="btn btn-outline btn-primary w-full">View Product</a>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
+          <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="rounded-xl w-full h-72 object-cover mb-6" />
+          <h3 class="text-3xl font-bold mb-1">Product 5</h3>
+          <p class="text-gray-600 mb-1">Simple & minimal bracelet</p>
+          <p class="text-xl font-semibold mb-1">$11.99</p>
+          <p class="text-sm text-gray-500 mb-4">Size: Diameter 17cm</p>
+          <a href="productview.html?id=5" class="btn btn-outline btn-primary w-full">View Product</a>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
+          <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="rounded-xl w-full h-72 object-cover mb-6" />
+          <h3 class="text-3xl font-bold mb-1">Product 6</h3>
+          <p class="text-gray-600 mb-1">Elegant design for formal wear</p>
+          <p class="text-xl font-semibold mb-1">$16.99</p>
+          <p class="text-sm text-gray-500 mb-4">Size: Diameter 18.2cm</p>
+          <a href="productview.html?id=6" class="btn btn-outline btn-primary w-full">View Product</a>
+        </div>
+
+      </div>
     </section>
 
-    <!-- Second Section-->
-    <section class = "w-full mx-auto px-4 py-10 bg-gradient-to-r from-neutral-50 via-pink-100 to-gray-50 mt-20 flex justify-center">
-
-      <div class = "carousel overflow-x-auto gap-20">
-        <!-- Product 1 -->
-        <div class = "overflow-hidden w-100 flex-shrink-0">
-          <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "h-115 object-cover"/>
-          <div class = "p-4">
-            <h3 class = "text-2xl font-medium"> Product 4 </h3>
-            <p class = "text-md text-gray-600 mt-2"> Description of first product </p>
-            <p class = "text-base font-semibold mt-2"> $10.99 </p>
-          </div>
-        </div>
-
-        <div class= "overflow-hidden w-100 flex-shrink-0">
-          <img src= " aset/photo-1507358522600-9f71e620c44e.webp" class= "h-115 object-cover"/>
-          <div class = "p-4">
-            <h3 class = "text-2xl font-medium"> Product 5 </h3>
-            <p class = "text-md text-gray-600 mt-2 "> Description of first product </p>
-            <p class = "text-base font-semibold mt-2"> $10.99 </p>
-          </div>
-        </div>
-
-        <div class = "overflow-hidden w-100 flex-shrink-0">
-          <img src = "aset/photo-1507358522600-9f71e620c44e.webp" class = "h-115 object-cover"/>
-          <div class = "p-4">
-            <h3 class = "text-2xl font-medium"> Product 6 </h3>
-            <p class = "text-md text-gray-600 mt-2"> Description of first product </p>
-            <p class = "text-base font-semibold mt-2"> $10.99 </p>
-          </div>
-        </div>
-
-    </section>
-
-
+    <!-- Mobile menu toggle script -->
     <script>
       const hamburgerButton = document.getElementById("hamburger-btn");
       const mobileMenu = document.getElementById("mobile-menu");
-
       hamburgerButton.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
       });
     </script>
-    <div id="footer"></div>
-    <script src="script.js"></script>
   </body>
 </html>

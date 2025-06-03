@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Product Detail</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="bg-gradient-to-r from-neutral-50 via-pink-100 to-gray-50 text-[#1b1b18] min-h-screen">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white text-black font-bold" id="navbar">
+      <div class="navbar shadow-sm">
+        <div class="flex-1 lg:flex hidden">
+          <ul class="menu menu-horizontal px-1">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="testimonial.html">Testimonial</a></li>
+          </ul>
+        </div>
+        <div class="flex-none ml-auto">
+          <a class="btn btn-ghost text-xl">daisyUI</a>
+        </div>
+        <div class="lg:hidden flex-none ml-auto">
+          <button id="hamburger-btn" class="btn btn-ghost text-xl">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="lg:hidden hidden fixed top-0 left-0 w-3/4 min-h-screen bg-gray-800 text-white z-50" id="mobile-menu">
+        <a class="btn btn-ghost text-xl px-6 py-4 block">daisyUI</a>
+        <ul class="menu menu-vertical px-6 py-6 my-3">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Testimonial</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Product Detail Section -->
+    <section class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 px-6 pt-32 pb-16">
+      <!-- Image -->
+      <div class="flex justify-center items-center">
+        <img id="product-image" src="aset/photo-1507358522600-9f71e620c44e.webp" alt="Product Image" class="rounded-3xl w-full max-w-md h-auto shadow-lg" />
+      </div>
+
+      <!-- Text Content -->
+      <div class="flex flex-col justify-center">
+        <h1 id="product-name" class="text-4xl font-bold mb-4">ROXANNE</h1>
+        <p id="product-type" class="text-2xl text-gray-600 mb-2">Bracelet</p>
+        <p id="product-price" class="text-2xl font-bold text-primary mb-2">Rp25.000,00</p>
+        <p id="product-size" class="text-lg text-gray-600 mb-6">Size: Diameter 17cm</p>
+        <p id="product-description" class="text-base text-gray-700 leading-relaxed">
+          This elegant bracelet is crafted for style and simplicity. Designed to complement both casual and formal wear, its clean finish and smooth curves make it a must-have accessory for any wardrobe.
+        </p>
+      </div>
+    </section>
+
+    <!-- JS to load dynamic content based on query string -->
+    <script>
+      const products = {
+        1: {
+          name: "ROXANNE",
+          type: "Bracelet",
+          price: "Rp25.000,00",
+          size: "Diameter 17cm",
+          description: "This elegant bracelet is crafted for style and simplicity. Designed to complement both casual and formal wear.",
+          image: "aset/photo-1507358522600-9f71e620c44e.webp",
+        },
+        2: {
+          name: "ARABELLA",
+          type: "Bracelet",
+          price: "Rp35.000,00",
+          size: "Diameter 18cm",
+          description: "Chic and graceful, ARABELLA features a timeless design ideal for sophisticated events.",
+          image: "aset/photo-1507358522600-9f71e620c44e.webp",
+        },
+        3: {
+          name: "NOVA",
+          type: "Bracelet",
+          price: "Rp29.000,00",
+          size: "Diameter 17.5cm",
+          description: "NOVA is a casual everyday bracelet with a lightweight feel and versatile design.",
+          image: "aset/photo-1507358522600-9f71e620c44e.webp",
+        },
+        4: {
+          name: "LUXE",
+          type: "Bracelet",
+          price: "Rp32.000,00",
+          size: "Diameter 16.8cm",
+          description: "LUXE is a bold, stylish bracelet built to stand out. Sleek, modern, and minimal.",
+          image: "aset/photo-1507358522600-9f71e620c44e.webp",
+        },
+        5: {
+          name: "MINIMA",
+          type: "Bracelet",
+          price: "Rp22.000,00",
+          size: "Diameter 17cm",
+          description: "MINIMA is a minimalist piece perfect for everyday elegance.",
+          image: "aset/photo-1507358522600-9f71e620c44e.webp",
+        },
+        6: {
+          name: "AURORA",
+          type: "Bracelet",
+          price: "Rp38.000,00",
+          size: "Diameter 18.2cm",
+          description: "AURORA offers a luxurious look for formal occasions with its elegant shine.",
+          image: "aset/photo-1507358522600-9f71e620c44e.webp",
+        },
+      };
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get("id");
+
+      if (products[productId]) {
+        const product = products[productId];
+        document.getElementById("product-name").textContent = product.name;
+        document.getElementById("product-type").textContent = product.type;
+        document.getElementById("product-price").textContent = product.price;
+        document.getElementById("product-size").textContent = "Size: " + product.size;
+        document.getElementById("product-description").textContent = product.description;
+        document.getElementById("product-image").src = product.image;
+      }
+    </script>
+  </body>
+</html>
