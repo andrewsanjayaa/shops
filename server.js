@@ -4,38 +4,30 @@ const compression = require("compression");
 const db = require("./db");
 const app = express();
 
-<<<<<<< HEAD
-const PORT = 3000;
-=======
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
 const aboutRoutes = require("./routes/aboutRoutes");
 const testimoniRoutes = require("./routes/testiRoutes");
->>>>>>> d60f03168f931ae0925dbe0214a45d06d72fbbf0
 
 // Middleware
-app.use(compression()); // aktifkan gzip compression
+app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));  
+
+app.use("/api/products", productRoutes);
+app.use("/users", userRoutes);
+app.use("/about", aboutRoutes);
+app.use("/testimonials", testimoniRoutes);
 
 // Route: SIGNUP
 app.post("/api/signup", async (req, res) => {
   const start = Date.now();
   const { username, password, confirmPassword } = req.body;
 
-<<<<<<< HEAD
   if (!username || !password || !confirmPassword) {
     return res.json({ success: false, error: "Semua field wajib diisi." });
   }
-=======
-app.use("/api/products", productRoutes);
-app.use("/users", userRoutes);
-app.use("/about", aboutRoutes);
-app.use("/testimonials", testimoniRoutes);
-
->>>>>>> d60f03168f931ae0925dbe0214a45d06d72fbbf0
-
   if (password !== confirmPassword) {
     return res.json({ success: false, error: "Password dan konfirmasi tidak cocok." });
   }
@@ -84,6 +76,6 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server berjalan di http://localhost:${PORT}`);
+app.listen(3000, () => {
+  console.log(`Server berjalan di http://localhost:3000`);
 });
