@@ -3,45 +3,123 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <title>Sign In</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net" />
-    <!-- JS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@5"
-      rel="stylesheet"
-      type="text/css"
-    />
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+      #error-message {
+        color: red;
+        margin-top: 10px;
+        font-size: 0.9rem;
+      }
+    </style>
   </head>
 
-  <body class = "min-h-screen bg-cover bg-center" style="background-image: url('your-image-path.jpg');">
-    <div class = "w-full md:py-4 py-2 bg-white shadow-lg flex justify-center">
-      <img src = "aset/photo-1507358522600-9f71e620c44e.webp" alt="Mystical Nekoco Logo" class="h-12">
+  <body
+    class="min-h-screen bg-cover bg-center"
+    style="background-image: url('your-image-path.jpg')"
+  >
+    <div class="w-full md:py-4 py-2 bg-white shadow-lg flex justify-center">
+      <img
+        src="aset/photo-1507358522600-9f71e620c44e.webp"
+        alt="Mystical Nekoco Logo"
+        class="h-12"
+      />
     </div>
-  
-    <!-- Login -->
 
-    <div id = "login" class = "flex justify-center items-center mt-20 px-4 flex flex-col">
-      <h1 class = "text-2xl font-bold mb-6 text-gray-800"> Hi, Let’s Get Closer! </h1>
-      <div class = "bg-white bg-opacity-90  p-8 rounded-xl border border-white shadow-lg max-w-sm w-full text-center">
-        <form class = "space-y-4">
-          <div class = "text-left">
-            <label class = "block text-sm font-medium text-gray-700 mb-1" for="email"> Email </label>
-            <input type = "email" id="email" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="email@gmail.com" required>
+    <div class="flex justify-center items-center mt-17 px-4 flex flex-col">
+      <h1 class="text-2xl font-bold mb-6 text-gray-800">Welcome Back!</h1>
+      <div
+        class="bg-white bg-opacity-90 p-8 rounded-xl border border-white shadow-lg max-w-sm w-full text-center"
+      >
+        <form class="space-y-4" id="login">
+          <div class="text-left">
+            <label
+              class="block text-sm font-medium text-gray-700 mb-1"
+              for="username"
+            >
+              Username
+            </label>
+            <input
+              type="text"
+              id="username"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md"
+              placeholder="your username"
+              required
+            />
           </div>
-          <div class = "text-left">
-            <label class = "block text-sm font-medium text-gray-700 mb-1" for="password"> Password </label>
-            <input type = "password" id = "password" class = "w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="password" required>
+          <div class="text-left">
+            <label
+              class="block text-sm font-medium text-gray-700 mb-1"
+              for="password"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md"
+              placeholder="password"
+              required
+            />
           </div>
-          <button type = "submit" class = "w-full bg-black text-white py-2 rounded-md hover:bg-gray-800 hover:cursor-pointer"> Sign In </button>
+          <button
+            type="submit"
+            class="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800 hover:cursor-pointer"
+          >
+            Sign In
+          </button>
         </form>
-        <div class = "flex justify-between text-sm mt-4 text-black">
-          <a href = "#" class = "underline hover:text-gray-600"> Forgot password? </a>
-          <a href = "signup.html" class = "underline hover:text-gray-600"> Sign Up → </a>
+        <div id="error-message"></div>
+        <div class="flex justify-between text-sm mt-4 text-black">
+          <a href="#" class="underline hover:text-gray-600">Forgot password?</a>
+          <a href="signup.html" class="underline hover:text-blue-600 transition-colors duration-200">Sign Up →</a>
         </div>
       </div>
     </div>
+
+    <script>
+      const loginForm = document.getElementById("login");
+      const errorMessage = document.getElementById("error-message");
+
+      loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        errorMessage.textContent = "";
+        const button = loginForm.querySelector("button[type='submit']");
+        button.disabled = true;
+        button.textContent = "Loading...";
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        try {
+          const res = await fetch("/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+          });
+          const data = await res.json();
+
+          if (data.success) {
+            location.href = "admin.html";
+          } else {
+            errorMessage.textContent = data.error;
+            button.disabled = false;
+            button.textContent = "Sign In";
+          }
+        } catch (err) {
+          errorMessage.textContent = "Server error. Please try again later.";
+          button.disabled = false;
+          button.textContent = "Sign In";
+        }
+      });
+    </script>
+  </body>
 </html>
