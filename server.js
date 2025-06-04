@@ -4,6 +4,7 @@ const compression = require("compression");
 const db = require("./db");
 const app = express();
 
+// Routes
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
 const aboutRoutes = require("./routes/aboutRoutes");
@@ -13,14 +14,15 @@ const testimoniRoutes = require("./routes/testiRoutes");
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));  
+app.use(express.static(path.join(__dirname, "public")));
 
+// Route handlers
 app.use("/api/products", productRoutes);
 app.use("/users", userRoutes);
 app.use("/about", aboutRoutes);
 app.use("/testimonials", testimoniRoutes);
 
-// Route: SIGNUP
+// Signup endpoint
 app.post("/api/signup", async (req, res) => {
   const start = Date.now();
   const { username, password, confirmPassword } = req.body;
@@ -48,7 +50,7 @@ app.post("/api/signup", async (req, res) => {
   }
 });
 
-// Route: LOGIN
+// Login endpoint
 app.post("/api/login", async (req, res) => {
   const start = Date.now();
   const { username, password } = req.body;
@@ -65,17 +67,18 @@ app.post("/api/login", async (req, res) => {
 
     if (result.rows.length > 0) {
       console.log(`Login selesai dalam ${Date.now() - start} ms`);
-      res.json({success:true});
-
+      return res.json({ success: true });
     } else {
       return res.json({ success: false, error: "Username atau password salah." });
     }
   } catch (error) {
-    console.error("Login error:", error);
+    console.error("Login error:", error.message);
     return res.status(500).json({ success: false, error: "Server error." });
   }
 });
 
-app.listen(3000, () => {
-  console.log(`Server berjalan di http://localhost:3000`);
+// Start server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server berjalan di http://localhost:${PORT}`);
 });

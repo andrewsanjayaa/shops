@@ -45,72 +45,35 @@
       </div>
     </nav>
 
-    <!-- Products Grid -->
-    <section class="w-full mx-auto px-6 py-10 bg-gradient-to-r from-neutral-50 via-pink-100 to-gray-50 mt-24">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+<section class="w-full mx-auto px-6 py-10 bg-gradient-to-r from-neutral-50 via-pink-100 to-gray-50 mt-24">
+  <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto"></div>
+</section>
 
-        <!-- Product Card Template -->
-        <!-- Repeat this block and change the link and content as needed -->
+<script>
+  async function loadProducts() {
+    try {
+      const response = await fetch("http://localhost:3000/api/products");
+      const products = await response.json();
+      const container = document.getElementById("product-grid");
 
-        <!-- Product 1 -->
-        <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
-          <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="rounded-xl w-full h-72 object-cover mb-6" />
-          <h3 class="text-3xl font-bold mb-1">Product 1</h3>
-          <p class="text-gray-600 mb-1">Description of first product</p>
-          <p class="text-xl font-semibold mb-1">$10.99</p>
-          <p class="text-sm text-gray-500 mb-4">Size: Diameter 17cm</p>
-          <a href="productview.html?id=1" class="btn btn-outline btn-primary w-full">View Product</a>
-        </div>
+      products.forEach(product => {
+        const card = `
+          <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
+            <img src="aset/${product.image}" class="rounded-xl w-full h-72 object-cover mb-6" />
+            <h3 class="text-3xl font-bold mb-1">${product.name}</h3>
+            <p class="text-gray-600 mb-1">${product.description}</p>
+            <p class="text-xl font-semibold mb-1">${product.stock}</p>
+            <a href="productview.html?id=${product.id}" class="btn btn-outline btn-primary w-full">View Product</a>
+          </div>`;
+        container.innerHTML += card;
+      });
+    } catch (error) {
+      console.error("Failed to fetch products", error);
+    }
+  }
 
-        <!-- Product 2 -->
-        <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
-          <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="rounded-xl w-full h-72 object-cover mb-6" />
-          <h3 class="text-3xl font-bold mb-1">Product 2</h3>
-          <p class="text-gray-600 mb-1">Elegant bracelet with style</p>
-          <p class="text-xl font-semibold mb-1">$15.99</p>
-          <p class="text-sm text-gray-500 mb-4">Size: Diameter 18cm</p>
-          <a href="productview.html?id=2" class="btn btn-outline btn-primary w-full">View Product</a>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
-          <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="rounded-xl w-full h-72 object-cover mb-6" />
-          <h3 class="text-3xl font-bold mb-1">Product 3</h3>
-          <p class="text-gray-600 mb-1">Casual wear bracelet</p>
-          <p class="text-xl font-semibold mb-1">$12.49</p>
-          <p class="text-sm text-gray-500 mb-4">Size: Diameter 17.5cm</p>
-          <a href="productview.html?id=3" class="btn btn-outline btn-primary w-full">View Product</a>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
-          <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="rounded-xl w-full h-72 object-cover mb-6" />
-          <h3 class="text-3xl font-bold mb-1">Product 4</h3>
-          <p class="text-gray-600 mb-1">Stylish and modern</p>
-          <p class="text-xl font-semibold mb-1">$14.99</p>
-          <p class="text-sm text-gray-500 mb-4">Size: Diameter 16.8cm</p>
-          <a href="productview.html?id=4" class="btn btn-outline btn-primary w-full">View Product</a>
-        </div>
-
-        <!-- Product 5 -->
-        <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
-          <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="rounded-xl w-full h-72 object-cover mb-6" />
-          <h3 class="text-3xl font-bold mb-1">Product 5</h3>
-          <p class="text-gray-600 mb-1">Simple & minimal bracelet</p>
-          <p class="text-xl font-semibold mb-1">$11.99</p>
-          <p class="text-sm text-gray-500 mb-4">Size: Diameter 17cm</p>
-          <a href="productview.html?id=5" class="btn btn-outline btn-primary w-full">View Product</a>
-        </div>
-
-        <!-- Product 6 -->
-        <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
-          <img src="aset/photo-1507358522600-9f71e620c44e.webp" class="rounded-xl w-full h-72 object-cover mb-6" />
-          <h3 class="text-3xl font-bold mb-1">Product 6</h3>
-          <p class="text-gray-600 mb-1">Elegant design for formal wear</p>
-          <p class="text-xl font-semibold mb-1">$16.99</p>
-          <p class="text-sm text-gray-500 mb-4">Size: Diameter 18.2cm</p>
-          <a href="productview.html?id=6" class="btn btn-outline btn-primary w-full">View Product</a>
-        </div>
+  document.addEventListener("DOMContentLoaded", loadProducts);
+</script>
 
       </div>
     </section>

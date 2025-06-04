@@ -52,86 +52,42 @@
     <section class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 px-6 pt-32 pb-16">
       <!-- Image -->
       <div class="flex justify-center items-center">
-        <img id="product-image" src="aset/photo-1507358522600-9f71e620c44e.webp" alt="Product Image" class="rounded-3xl w-full max-w-md h-auto shadow-lg" />
+        <img id="product-image" src="" alt="Product Image" class="rounded-3xl w-full max-w-md h-auto shadow-lg" />
       </div>
 
       <!-- Text Content -->
       <div class="flex flex-col justify-center">
-        <h1 id="product-name" class="text-4xl font-bold mb-4">ROXANNE</h1>
-        <p id="product-type" class="text-2xl text-gray-600 mb-2">Bracelet</p>
-        <p id="product-price" class="text-2xl font-bold text-primary mb-2">Rp25.000,00</p>
-        <p id="product-size" class="text-lg text-gray-600 mb-6">Size: Diameter 17cm</p>
-        <p id="product-description" class="text-base text-gray-700 leading-relaxed">
-          This elegant bracelet is crafted for style and simplicity. Designed to complement both casual and formal wear, its clean finish and smooth curves make it a must-have accessory for any wardrobe.
-        </p>
+        <h1 id="product-name" class="text-4xl font-bold mb-4"></h1>
+        <p id="product-type" class="text-2xl text-gray-600 mb-2"></p>
+        <p id="product-price" class="text-2xl font-bold text-primary mb-2"></p>
+        <p id="product-description" class="text-base text-gray-700 leading-relaxed"></p>
       </div>
     </section>
 
-    <!-- JS to load dynamic content based on query string -->
-    <script>
-      const products = {
-        1: {
-          name: "ROXANNE",
-          type: "Bracelet",
-          price: "Rp25.000,00",
-          size: "Diameter 17cm",
-          description: "This elegant bracelet is crafted for style and simplicity. Designed to complement both casual and formal wear.",
-          image: "aset/photo-1507358522600-9f71e620c44e.webp",
-        },
-        2: {
-          name: "ARABELLA",
-          type: "Bracelet",
-          price: "Rp35.000,00",
-          size: "Diameter 18cm",
-          description: "Chic and graceful, ARABELLA features a timeless design ideal for sophisticated events.",
-          image: "aset/photo-1507358522600-9f71e620c44e.webp",
-        },
-        3: {
-          name: "NOVA",
-          type: "Bracelet",
-          price: "Rp29.000,00",
-          size: "Diameter 17.5cm",
-          description: "NOVA is a casual everyday bracelet with a lightweight feel and versatile design.",
-          image: "aset/photo-1507358522600-9f71e620c44e.webp",
-        },
-        4: {
-          name: "LUXE",
-          type: "Bracelet",
-          price: "Rp32.000,00",
-          size: "Diameter 16.8cm",
-          description: "LUXE is a bold, stylish bracelet built to stand out. Sleek, modern, and minimal.",
-          image: "aset/photo-1507358522600-9f71e620c44e.webp",
-        },
-        5: {
-          name: "MINIMA",
-          type: "Bracelet",
-          price: "Rp22.000,00",
-          size: "Diameter 17cm",
-          description: "MINIMA is a minimalist piece perfect for everyday elegance.",
-          image: "aset/photo-1507358522600-9f71e620c44e.webp",
-        },
-        6: {
-          name: "AURORA",
-          type: "Bracelet",
-          price: "Rp38.000,00",
-          size: "Diameter 18.2cm",
-          description: "AURORA offers a luxurious look for formal occasions with its elegant shine.",
-          image: "aset/photo-1507358522600-9f71e620c44e.webp",
-        },
-      };
+   <!-- Replace existing JS at the bottom with this -->
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get("id");
 
-      const urlParams = new URLSearchParams(window.location.search);
-      const productId = urlParams.get("id");
+  async function loadProductDetail(id) {
+    try {
+      const res = await fetch(`http://localhost:3000/api/products`);
+      const products = await res.json();
+      const product = products.find(p => p.id == id);
 
-      if (products[productId]) {
-        const product = products[productId];
+      if (product) {
         document.getElementById("product-name").textContent = product.name;
         document.getElementById("product-type").textContent = product.type;
-        document.getElementById("product-price").textContent = product.price;
-        document.getElementById("product-size").textContent = "Size: " + product.size;
+        document.getElementById("product-price").textContent = "Rp." + product.stock;
         document.getElementById("product-description").textContent = product.description;
-        document.getElementById("product-image").src = product.image;
+        document.getElementById("product-image").src = "aset/" + product.image;
       }
-    </script>
-  </body>
-</html>
+    } catch (error) {
+      console.error("Error loading product details", error);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    loadProductDetail(productId);
+  });
+</script>
