@@ -4,7 +4,9 @@ const path = require("path");
 
 exports.product = async (req, res) => {
   try {
-    const result = await db.query("SELECT * FROM product");
+    const result = await db.query("SELECT * FROM product WHERE name !== $1", [
+      "Custom",
+    ]);
     res.json(result.rows);
   } catch (err) {
     console.log(err);
