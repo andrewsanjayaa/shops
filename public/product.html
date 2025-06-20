@@ -24,7 +24,7 @@
           </ul>
         </div>
         <div class="flex-none ml-auto">
-          <a class="btn btn-ghost text-xl">daisyUI</a>
+          <a href = "login.html" class = "btn btn-ghost text-xl">Login</a>
         </div>
         <div class="lg:hidden flex-none ml-auto">
           <button id="hamburger-btn" class="btn btn-ghost text-xl">
@@ -37,10 +37,10 @@
       <div class="lg:hidden hidden fixed top-0 left-0 w-3/4 min-h-screen bg-gray-800 text-white z-50" id="mobile-menu">
         <a class="btn btn-ghost text-xl px-6 py-4 block">daisyUI</a>
         <ul class="menu menu-vertical px-6 py-6 my-3">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">Testimonial</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="product.html">Products</a></li>
+          <li><a href="testimonial.html">Testimonial</a></li>
         </ul>
       </div>
     </nav>
@@ -58,12 +58,12 @@
 
       products.forEach(product => {
         const card = `
-          <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale-105">
+          <div class="bg-white rounded-3xl p-6 shadow-xl transition hover:scale- flex flex-col justify-between">
             <img src="aset/${product.image}" class="rounded-xl w-full h-72 object-cover mb-6" />
             <h3 class="text-3xl font-bold mb-1">${product.name}</h3>
             <p class="text-gray-600 mb-1">${product.description}</p>
             <p class="text-xl font-semibold mb-1">Rp. ${product.stock}</p>
-            <a href="productview.html?id=${product.id}" class="btn btn-outline btn-primary w-full">View Product</a>
+            <a href="productview.html?id=${product.id}" class="btn btn-outline btn-primary w-full mt-auto">View Product</a>
           </div>`;
         container.innerHTML += card;
       });

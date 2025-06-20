@@ -44,17 +44,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       data.forEach((item) => {
         const div = document.createElement("div");
-        div.className = "carousel-item flex flex-col m-0 p-0";
+        div.className = "carousel-item flex flex-col m-0 p-0 bg-white";
 
         div.innerHTML = `
           <img
             src="./aset/${item.image}"
             class="rounded-box w-2/3"
           />
-          <p class="text-lg font-bold dark:text-white text-center pt-3 w-2/3">
+          <p class="text-lg font-bold dark:text-black text-center pt-3 w-2/3">
             ${item.name}
           </p>
-          <p class="text-md font-bold dark:text-white text-center w-2/3">
+          <p class="text-md font-bold dark:text-black text-center w-2/3">
             ${item.description}
           </p>
         `;
@@ -67,20 +67,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-fetch('footer.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById('footer').innerHTML = html;
-  });
-
-document.addEventListener("DOMContentLoaded", () => {
-  const footer = document.getElementById("footer");
-  if (footer) {
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(html => {
-        footer.innerHTML = html;
-      })
-      .catch(err => console.error("Gagal load footer:", err));
-  }
-});
