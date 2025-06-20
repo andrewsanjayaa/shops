@@ -133,6 +133,14 @@
       </div>
     </section>
     <script>
+      const hamburgerButton = document.getElementById("hamburger-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      hamburgerButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+    <script>
       document.addEventListener("DOMContentLoaded", () => {
         fetch("/about")
           .then((res) => res.json())
